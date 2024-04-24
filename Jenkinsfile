@@ -10,15 +10,23 @@ pipeline{
         }
         stage('Build Executable file'){
             steps{
-                // Компилируем main.cpp и сохраняем результат в файл main
+                // РљРѕРјРїРёР»РёСЂСѓРµРј main.cpp Рё СЃРѕС…СЂР°РЅСЏРµРј СЂРµР·СѓР»СЊС‚Р°С‚ РІ С„Р°Р№Р» main
                 sh 'g++ main.cpp -o main'
             }
         }
         stage('Application Launch Test'){
             steps{
-                // Запускаем исполняемый файл main из текущего каталога
+                // Р—Р°РїСѓСЃРєР°РµРј РёСЃРїРѕР»РЅСЏРµРјС‹Р№ С„Р°Р№Р» main РёР· С‚РµРєСѓС‰РµРіРѕ РєР°С‚Р°Р»РѕРіР°
                 sh './main'
             }
         }
     }
+	post{
+		success{
+			echo 'You can go home'
+		}
+		failure{
+			echo 'Sit and work on'
+		}
+	}
 }
